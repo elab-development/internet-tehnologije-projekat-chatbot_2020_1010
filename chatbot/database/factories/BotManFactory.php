@@ -19,9 +19,8 @@ class BotManFactory extends Factory
     public function definition(): array
     {
         return [
-                'botman_name' => $faker->userName,
-                'number_of_calls' => $faker->numberBetween(0, 100),
-                'user_id'=>User::factory(), 
+                'botman_name' => $this->faker->userName,
+                'number_of_calls' => $this->faker->numberBetween(0, 5),
         ];
     }
 }

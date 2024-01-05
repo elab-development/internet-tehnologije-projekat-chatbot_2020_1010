@@ -9,6 +9,8 @@ class ChatHistory extends Model
 {
     use HasFactory;
 
+    protected $table = 'chat_histories';
+
     protected $fillable = ['user_id', 'botman_id', 'timestamp', 'message', 'response'];
 
     public function user()

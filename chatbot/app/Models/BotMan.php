@@ -9,13 +9,11 @@ class BotMan extends Model
 {
     use HasFactory;
 
+    protected $table = 'botmans';
+
     protected $fillable = ['botman_name', 'number_of_calls'];
 
 
-    public function users()
-    {
-        return $this->hasMany(User::class);
-    }
 
     public function chatHistories()
     {

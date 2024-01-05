@@ -22,9 +22,9 @@ class ChatHistoryFactory extends Factory
         return [
             'user_id' => User::factory(),
             'botman_id' => BotMan::factory(),
-            'timestamp' => $faker->dateTime(),
-            'message' => $faker->sentence,
-            'response' => $faker->sentence,
+            'timestamp' => $this->faker->dateTime(),
+            'message' => $this->faker->sentence,
+            'response' => $this->faker->sentence,
         ];
     }
 }

@@ -43,10 +43,6 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function botMan()
-    {
-        return $this->belongsTo(BotMan::class);
-    }
 
     public function chatHistories()
     {

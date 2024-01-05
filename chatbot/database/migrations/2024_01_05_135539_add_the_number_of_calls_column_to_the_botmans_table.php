@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('the_botmans', function (Blueprint $table) {
+        Schema::table('botmans', function (Blueprint $table) {
             $table->integer('number_of_calls')->default(0);
         });
     }
@@ -21,7 +21,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('the_botmans', function (Blueprint $table) {
+        Schema::table('botmans', function (Blueprint $table) {
             $table ->dropColumn('number_of_calls');
         });
     }

@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('botmans', function (Blueprint $table) {
-            $table->foreignId('user_id')->nullable()->references('id')->on('users')->onDelete('set null');
+        Schema::table('users', function (Blueprint $table) {
+            $table->boolean('isAdmin')->default(false);
         });
     }
 
@@ -21,8 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('botmans', function (Blueprint $table) {
-            $table->dropForeign('user_id');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('isAdmin');
         });
     }
 };
