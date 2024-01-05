@@ -11,4 +11,15 @@ class BotMan extends Model
 
     protected $fillable = ['botman_name', 'number_of_calls'];
 
+
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
+
+    public function chatHistories()
+    {
+        return $this->hasMany(ChatHistory::class);
+    }
+
 }

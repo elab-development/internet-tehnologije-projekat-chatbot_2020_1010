@@ -42,4 +42,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function botMan()
+    {
+        return $this->belongsTo(BotMan::class);
+    }
+
+    public function chatHistories()
+    {
+        return $this->hasMany(ChatHistory::class);
+    }
 }

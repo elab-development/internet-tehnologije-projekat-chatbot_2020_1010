@@ -10,4 +10,14 @@ class ChatHistory extends Model
     use HasFactory;
 
     protected $fillable = ['user_id', 'botman_id', 'timestamp', 'message', 'response'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function botMan()
+    {
+        return $this->belongsTo(BotMan::class);
+    }
 }
