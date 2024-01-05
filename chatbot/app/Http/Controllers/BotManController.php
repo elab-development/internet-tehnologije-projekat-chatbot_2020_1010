@@ -9,10 +9,21 @@ use App\Http\Resources\BotManResource;
 use App\Models\BotMan;
 use Illuminate\Support\Facades\Validator;
 
+use Illuminate\Support\Facades\Auth;
+
 class BotManController extends Controller
 {
     public function index()
     {
+        $user_id = Auth::user()->id; 
+
+        //ADMINISTRATOR
+        $isAdmin = Auth::user()->isAdmin;
+
+        if (!$isAdmin) {
+             return response()->json(['error' => 'NEOVLASCEN PRISTUP: Administrator samo moze videti sve chatbot-ove!'], 403);
+         }
+
         $botman = BotMan::all();
         return BotManResource::collection($botman);
     }
@@ -20,12 +31,29 @@ class BotManController extends Controller
 
     public function show($id)
     {
+        $user_id = Auth::user()->id; 
+
+        //ADMINISTRATOR
+        $isAdmin = Auth::user()->isAdmin;
+
+        if (!$isAdmin) {
+             return response()->json(['error' => 'NEOVLASCEN PRISTUP: Administrator samo moze videti specificnog chatbot-a!'], 403);
+         }
+
         $botman = BotMan::findOrFail($id);
         return new BotManResource($botman);
     }
 
     public function store(Request $request)
     {
+        $user_id = Auth::user()->id; 
+
+        //ADMINISTRATOR
+        $isAdmin = Auth::user()->isAdmin;
+
+        if (!$isAdmin) {
+             return response()->json(['error' => 'NEOVLASCEN PRISTUP: Administrator samo moze kreirati novog chatbot-a!'], 403);
+         }
 
     $validator = Validator::make($request->all(), [
         'botman_name' => 'required',
@@ -51,6 +79,15 @@ class BotManController extends Controller
 
     public function updateBotName(Request $request, $id)
      {
+        $user_id = Auth::user()->id; 
+
+        //ADMINISTRATOR
+        $isAdmin = Auth::user()->isAdmin;
+
+        if (!$isAdmin) {
+             return response()->json(['error' => 'NEOVLASCEN PRISTUP: Administrator samo moze menjati ime chatbot-a!'], 403);
+         }
+
          $request->validate([
             'botman_name' => 'required',
          ]);
@@ -66,6 +103,15 @@ class BotManController extends Controller
 
     public function destroy($id)
     {
+        $user_id = Auth::user()->id; 
+
+        //ADMINISTRATOR
+        $isAdmin = Auth::user()->isAdmin;
+
+        if (!$isAdmin) {
+             return response()->json(['error' => 'NEOVLASCEN PRISTUP: Administrator samo moze obrisati chatbot-a!'], 403);
+         }
+
         $botman = botman::findOrFail($id);
         $botman->delete();
         return response()->json('Botman je uspesno obrisan!');
