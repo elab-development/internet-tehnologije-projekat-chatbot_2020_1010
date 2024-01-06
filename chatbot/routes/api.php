@@ -23,6 +23,9 @@ use App\Http\Controllers\ChatHistoryController;
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 
+//Reset lozinke
+Route::post('resetPassword',[AuthController::class,'resetPassword']);
+
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
 
@@ -44,5 +47,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     //ONAJ USER KOJI JE KREIRAO
     Route::delete('chat_histories/{id}', [ChatHistoryController::class, 'destroy']); 
 
-
+    //LOGOUT
+    Route::post('logout', [AuthController::class, 'logout']);
 });
