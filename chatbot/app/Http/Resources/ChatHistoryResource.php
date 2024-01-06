@@ -20,7 +20,7 @@ class ChatHistoryResource extends JsonResource
             'Poruka: '=> $this->resource->message,
             'Odgovor: '=> $this->resource->response,
             'Poruku je poslao korisnik: '=> new UserResource($this->resource->user),
-            'Poruka je poslata botu: '=> new BotManResource($this->resource->botMan),
+            'Poruka je poslata botu: '=> new BotManResource($this->resource->botman),
         ];
     }
 }

@@ -6,36 +6,17 @@ use Illuminate\Http\Request;
 
 use App\Http\Resources\ChatHistoryResource;
 use App\Models\ChatHistory;
-use App\Models\BotMan as Bot;
+use App\Models\BotMan;
 use Illuminate\Support\Facades\Validator;
 
-//BOTMAN
-use BotMan\BotMan\BotMan;
-use BotMan\BotMan\BotManFactory;
-use BotMan\BotMan\Drivers\DriverManager;
+
+use Illuminate\Support\Facades\Auth;
 
 
 
 class ChatHistoryController extends Controller
 {
 
-    private function getBotmanInstance()
-{
-    // Your BotMan instance creation logic goes here
-    $config = [
-        'web' => [
-            'matchingData' => [
-                'driver' => 'web',
-            ],
-        ],
-        'conversation_cache_time' => 40,
-        'user_cache_time' => 30,
-    ];
-
-    DriverManager::loadDriver(\BotMan\Drivers\Web\WebDriver::class);
-
-    return BotManFactory::create($config);
-}
 
     public function index()
     {
@@ -80,10 +61,8 @@ class ChatHistoryController extends Controller
          }
 
     $validator = Validator::make($request->all(), [
-        'timestamp' => 'required',
         'message' => 'required',
         'botman_id' => 'required',
-
     ]);
 
     if ($validator->fails()) {
@@ -92,42 +71,80 @@ class ChatHistoryController extends Controller
 
 
     $chat_history = new ChatHistory();
-    $chat_history->timestamp = $request->timestamp;
+    $chat_history->timestamp = now()->format('y-m-d H:i:s');;
     $message = $chat_history->message = $request->message;
-
-    $botman = $this->getBotmanInstance(); 
     
-    if($message == 'Hello'){
-        $botman->hears('Hello', function (BotMan $bot) {
-            $bot->reply('Hello yourself.');
-            $response = $bot->getMessage()->getText();
-            $chat_history->user_id = $user_id;
-            $chat_history->botman_id = $request->botman_id;
-            $chat_history->save();
-        });
-    }
-    
-    if($message == 'What is your name?'){
-        $botman->hears('What is your name?', function (BotMan $bot) {
-            $chat_history->botman_id = $request->botman_id;
-            $botman_name = (Bot::find($chatHistory->botman_id))->botman_name;
-            $bot->reply('My name is '.$botman_name.'.');
-            $response = $bot->getMessage()->getText();
+    if($message == 'Hello.'){
+            $response = 'Hello to you to!!!';
+            $chat_history->response = $response;
             $chat_history->user_id = $user_id;
             
-            $chat_history->save();
-        });
-    }
+            $chat_history->botman_id = $request->botman_id;
+            $botman = (BotMan::find($chat_history->botman_id));
+            $botman->number_of_calls++;
+            $botman->save();
 
+            $chat_history->save();
+        };
+
+    
     if($message == 'What is your name?'){
-        $botman->hears('What is the definition of an apple?', function (BotMan $bot) {
-            $bot->reply('An apple is a type of edible fruit produced by an apple tree (Malus domestica).');
-            $response = $bot->getMessage()->getText();
+            $chat_history->botman_id = $request->botman_id;
+            $botman_name = (BotMan::find($chat_history->botman_id))->botman_name;
+            $botman = (BotMan::find($chat_history->botman_id));
+            $botman->number_of_calls++;
+            $botman->save();
+            $response = 'My name is '.$botman_name.'.';
+            $chat_history->response = $response;
+            $chat_history->user_id = $user_id;
+            $chat_history->save();
+        };
+
+    if($message == 'What is the definition of an apple?'){
+            $response = 'An apple is a type of edible fruit produced by an apple tree (Malus domestica).';
+            $chat_history->response = $response;
             $chat_history->user_id = $user_id;
             $chat_history->botman_id = $request->botman_id;
+            $botman = (BotMan::find($chat_history->botman_id));
+            $botman->number_of_calls++;
+            $botman->save();
             $chat_history->save();
-        });
-    }
+        };
+
+
+        if($message == 'Tell me a joke.'){
+            $response = 'Your life.😎';
+            $chat_history->response = $response;
+            $chat_history->user_id = $user_id;
+            $chat_history->botman_id = $request->botman_id;
+            $botman = (BotMan::find($chat_history->botman_id));
+            $botman->number_of_calls++;
+            $botman->save();
+            $chat_history->save();
+        };
+
+        //BROJI MI DO NEKOG BROJA
+        if (preg_match('/^Count to (\d+)$/', $message, $matches)) {
+            // Extract the number from the message
+            $countTo = (int)$matches[1];
+        
+            // Generate a list of numbers from 1 to $countTo
+            $numbers = implode(', ', range(1, $countTo));
+        
+            // Set the response
+            $response = 'Counting to ' . $countTo . ': ' . $numbers;
+            $chat_history->response = $response;
+            $chat_history->user_id = $user_id;
+            $chat_history->botman_id = $request->botman_id;
+            $botman = (BotMan::find($chat_history->botman_id));
+            $botman->number_of_calls++;
+            $botman->save();
+            $chat_history->save();
+
+        } else {
+            // Handle the case where the message doesn't match the pattern
+            $response = 'Please provide a valid command, e.g., "Count to X".';
+        }
 
 
     return response()->json(['Chat je uspesno zabelezen!!!',
@@ -150,7 +167,7 @@ class ChatHistoryController extends Controller
             return response()->json(['error' => 'NEOVLASCEN PRISTUP: Korisnik nije ucestvovao u datom chat-u pa ga ne moze ni brisati!'], 403);
          }
 
-        $chat_history = Chat::findOrFail($id);
+        $chat_history = ChatHistory::findOrFail($id);
         $chat_history->delete();
         return response()->json('Rekord datog chat-a uspesno obrisan!');
     }

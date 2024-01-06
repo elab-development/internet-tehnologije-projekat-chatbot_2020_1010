@@ -18,7 +18,7 @@ class ChatHistory extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function botMan()
+    public function botman()
     {
         return $this->belongsTo(BotMan::class);
     }

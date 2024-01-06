@@ -57,7 +57,6 @@ class BotManController extends Controller
 
     $validator = Validator::make($request->all(), [
         'botman_name' => 'required',
-        'number_of_calls' => 'required',
     ]);
 
     if ($validator->fails()) {
@@ -67,7 +66,7 @@ class BotManController extends Controller
 
     $botman = new BotMan();
     $botman->botman_name = $request->botman_name;
-    $botman->number_of_calls = $request->number_of_calls;
+    $botman->number_of_calls = 0;
 
     $botman->save();
 
