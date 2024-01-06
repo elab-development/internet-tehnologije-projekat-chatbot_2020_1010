@@ -30,5 +30,20 @@ class BotManSeeder extends Seeder
         ]);
 
         BotMan::factory()->times(3)->create();
+
+        BotMan::create([
+            'botman_name'=>"Robit",
+            'number_of_calls'=> 0,
+        ]);
+        
+        BotMan::create([
+            'botman_name'=>"Robit",
+            'number_of_calls'=> 0,
+        ]);
+
+        BotMan::create([
+            'botman_name'=>"Robit",
+            'number_of_calls'=> 0,
+        ]);
     }
 }

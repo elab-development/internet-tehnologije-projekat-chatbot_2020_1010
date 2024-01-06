@@ -8,6 +8,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\BotManController;
 use App\Http\Controllers\ChatHistoryController;
 
+use App\Http\Controllers\SearchController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -43,6 +45,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     //SVAKO KO JE ULOGOVAN(SEM ADMINA)
     Route::post('chat_histories', [ChatHistoryController::class, 'store']);
+    //pretraga Thread po imenu
+    Route::get('/search/botmans', [SearchController::class, 'searchBotMan']);
 
     //ONAJ USER KOJI JE KREIRAO
     Route::delete('chat_histories/{id}', [ChatHistoryController::class, 'destroy']); 
