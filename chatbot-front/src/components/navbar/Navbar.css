@@ -1,0 +1,74 @@
+.nav {
+  background: linear-gradient(109.6deg, rgb(0, 0, 0) 11.2%, rgb(11, 132, 145) 91.1%);
+     opacity: 0.8;
+    color: white;
+      position: sticky;
+    margin: auto !important;
+    flex: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 90px;
+      top: 0;
+      padding-right: 60px;
+      font-family: 'Orbitron', sans-serif;
+  }
+  h1 {
+    margin-left: 15px;
+    font-size: 25px;
+  }
+  
+  .nav__item{
+    background: none;
+    display: inline-block;
+    margin: 0px 30px;
+    color: #fff;
+    font-size: 15px;
+  }
+  
+  a{
+    text-decoration: none;
+    color: #fff;
+  }
+   /* za hover preko stranica*/
+   .nav li:not(:first-child):after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 1px;
+    display: block;
+    transition: all 0.5s ease;
+    bottom: 25%;
+  }
+  
+  .nav li:not(:first-child):hover::after {
+    width: 7%;
+    height: 1px;
+    background-color: #fff;
+  }
+  .logout-button {
+    background: radial-gradient(circle at 1.8% 4.8%, rgb(17, 23, 58) 0%, rgb(58, 85, 148) 90%);; 
+    color: white; 
+    border: none; 
+    border-radius: 10px;
+    font-size: 18px;
+    padding: 8px 12px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+    font-family: 'Orbitron', sans-serif;
+  }
+  
+  .logout-button:hover {
+    background: linear-gradient(109.6deg, rgb(72, 200, 160) 11.2%, rgb(32, 40, 48) 91.3%);
+  }
+
+  .logo {
+    width: 50px; /* Set the desired width for the logo */
+    height: auto; /* Maintain aspect ratio */
+    margin-left: 10px; /* Add some space between the title and logo */
+  }
+
+  .nav__title {
+    display: flex; /* Use flexbox to create a flexible container */
+    align-items: center; /* Align items vertically in the center */
+  }

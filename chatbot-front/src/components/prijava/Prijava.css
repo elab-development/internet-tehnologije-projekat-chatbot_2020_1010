@@ -1,0 +1,73 @@
+.login-form {
+    max-width: 100%;
+    padding: 180px;
+    background-image: url('https://viterbischool.usc.edu/wp-content/uploads/2023/07/iStock-chip-crop.jpg');
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    color: white;
+    margin: 0;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.login-form-data {
+    background: linear-gradient(109.6deg, rgb(0, 0, 0) 11.2%, rgb(11, 132, 145) 91.1%);
+    text-align: center;
+    color: white;
+    max-width: 40%;
+    padding: 20px;
+    margin: 90px auto;
+    border-radius: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 90%;
+}
+
+.login-form h2 {
+    margin-bottom: 15px;
+    color: white;
+}
+
+.login-form p {
+    color: white;
+}
+
+.login-form label {
+    width: 50%;
+    text-align: left;
+    margin-bottom: 5px;
+    color: white;
+    font-weight: bold;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+    width: 50%;
+    margin-bottom: 15px;
+    padding: 8px;
+    border: 3px solid black; 
+    border-radius: 3px;
+}
+
+.login-form button {
+    width: 50%;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    background: radial-gradient(circle at 1.8% 4.8%, rgb(17, 23, 58) 0%, rgb(58, 85, 148) 90%);
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: medium;
+    font-weight: bold;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.login-form button:hover {
+    background: linear-gradient(109.6deg, rgb(72, 200, 160) 11.2%, rgb(32, 40, 48) 91.3%);
+}
+
+.link-black {
+    color: white;
+  }
