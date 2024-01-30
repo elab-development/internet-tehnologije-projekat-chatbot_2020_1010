@@ -1,2 +1,30 @@
+.pitanje-stranica {
+  background: url('https://s13.gifyu.com/images/SCKBJ.gif')center/cover no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-repeat: repeat;
+  height: 700px;
+  padding-top: 100px;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.pitanje-tekst{
+  background: url('https://s13.gifyu.com/images/SCNLK.gif')center/cover no-repeat;
+  width: 700px;
+  opacity: 0.98;
+  color: white;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  display: flex;  
+}
+
+.chatbot{
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
 
