@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Pocetna.css';
+import Footer from '../footer/Footer';
 
 const Pocetna = () => {
   const [sala, setSala] = useState(null);
@@ -44,6 +45,7 @@ const Pocetna = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   );
 };
