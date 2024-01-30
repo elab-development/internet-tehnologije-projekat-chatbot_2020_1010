@@ -1,32 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+// Pocetna.jsx
+import React from 'react';
 import './Pocetna.css';
 import Footer from '../footer/Footer';
+import useJoke from './useJoke'; // Update the path accordingly
 
 const Pocetna = () => {
-  const [sala, setSala] = useState(null);
-
-  useEffect(() => {
-    const fetchSala = async () => {
-      try {
-        const response = await axios.get('https://api.chucknorris.io/jokes/random');
-
-        console.log(response.data); // Log the entire API response
-
-        if (response.data && response.data.value) {
-          setSala({
-            joke: response.data.value
-          });
-        } else {
-          console.error('No Chuck Norris joke found in the response.');
-        }
-      } catch (error) {
-        console.error('Došlo je do greške prilikom dohvatanja šale:', error);
-      }
-    };
-
-    fetchSala();
-  }, []);
+  const joke = useJoke();
 
   return (
     <>
@@ -37,9 +16,9 @@ const Pocetna = () => {
 
           <div className='sala'>
             <h2>Izgenerisana šala:</h2>
-            {sala && (
+            {joke && (
               <blockquote>
-                <span className="type" style={{ '--n': 106 }}>{sala.joke}</span>
+                <span className="type" style={{ '--n': 106 }}>{joke.joke}</span>
               </blockquote>
             )}
           </div>
