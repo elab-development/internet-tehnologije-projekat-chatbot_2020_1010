@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Prijava from './components/prijava/Prijava';
 import Registracija from './components/registracija/Registracija';
 import NavBar from './components/navbar/Navbar';
+import Pocetna from './components/pocetna/Pocetna';
 
 function App() {
 
@@ -41,6 +42,8 @@ function App() {
                 <Route path="/registracija" element={<Registracija onRegister={handleRegister}
                        users={users} />} 
                    />
+
+                <Route path="/pocetna" element={<Pocetna/>} />
                 </Routes>
               
             </BrowserRouter>

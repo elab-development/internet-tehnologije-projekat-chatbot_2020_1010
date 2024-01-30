@@ -1,0 +1,95 @@
+.pocetna-stranica {
+    background: url('https://s13.gifyu.com/images/SCKBJ.gif')center/cover no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-repeat: repeat;
+    height: 700px;
+    padding-top: 100px;
+    font-family: 'Orbitron', sans-serif;
+  }
+
+  .pocetna-tekst{
+    background: linear-gradient(109.6deg, rgb(0, 0, 0) 11.2%, rgb(11, 132, 145) 91.1%);
+    width: 700px;
+    opacity: 0.98;
+    color: white;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+  }
+  
+  h1 {
+    font-size: 25px;
+    margin-bottom: 30px;
+
+  }
+  
+  p {
+    font-size: 18px;
+    margin-bottom: 30px;
+  }
+  
+  .citat {
+    background-color: rgba(213, 201, 212, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 0 auto;
+    max-width: 600px;
+  }
+  
+  h2 {
+    font-size: 22px;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+  }
+  
+  blockquote {
+    font-size: 18px;
+    margin: 0;
+  }
+  
+  blockquote p {
+    margin-bottom: 10px;
+  }
+  
+  footer {
+    font-size: 16px;
+  }
+
+  .type {
+    color: #0000;
+    background:
+      linear-gradient(-90deg, white 5px, #0000 0) 10px 0,
+      linear-gradient(white 0 0) 0 0;
+    background-size: calc(var(--n) * 1ch) 200%;
+    -webkit-background-clip: padding-box, text;
+    background-clip: padding-box, text;
+    background-repeat: no-repeat;
+    animation: 
+      b 0.5s infinite steps(1),  /* Adjust the animation duration here */
+      t calc(var(--n) * 0.15s) steps(var(--n)) forwards; /* Adjust the animation duration here */
+  }
+  
+  @keyframes t {
+    from {
+      background-size: 0 200%;
+    }
+  }
+  
+  @keyframes b {
+    50% {
+      background-position: 0 -100%, 0 0;
+    }
+  }
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
