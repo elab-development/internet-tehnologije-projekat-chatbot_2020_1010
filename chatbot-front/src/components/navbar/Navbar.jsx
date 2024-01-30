@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { RiQuestionAnswerFill } from "react-icons/ri";
 import { IoHomeSharp } from "react-icons/io5";
-import { FaHistory } from "react-icons/fa";
 import './Navbar.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -29,10 +28,7 @@ function NavBar({ loggedInUser, handleLogout }) {
                   <Link to='/pocetna'> Pocetna <IoHomeSharp /> </Link>
                 </li>
                 <li className="nav__item">
-                  <Link to='/feed'> Pitaj pitanja <RiQuestionAnswerFill /></Link>
-                </li>
-                <li className="nav__item">
-                  <Link to='/korisnici'> Istorija pitanja <FaHistory /></Link>
+                  <Link to='/pitanje'> Pitaj pitanja <RiQuestionAnswerFill /></Link>
                 </li>
                 <button className="logout-button" onClick={handleLogoutClick}>
                 Odjava

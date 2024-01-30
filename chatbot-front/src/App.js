@@ -5,6 +5,7 @@ import Prijava from './components/prijava/Prijava';
 import Registracija from './components/registracija/Registracija';
 import NavBar from './components/navbar/Navbar';
 import Pocetna from './components/pocetna/Pocetna';
+import Pitanje from './components/pitanje/Pitanje';
 
 function App() {
 
@@ -44,6 +45,8 @@ function App() {
                    />
 
                 <Route path="/pocetna" element={<Pocetna/>} />
+                <Route path="/pitanje" element={<Pitanje/>} />
+
                 </Routes>
               
             </BrowserRouter>
