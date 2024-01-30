@@ -38,7 +38,22 @@ const Pitanje = () => {
         },
         {
           id: 'Ime',
-          message: 'Zdravo {previousValue}. Oznaci sta zelis da cujes: ',
+          message: 'Zdravo {previousValue}. Odakle si?',
+          trigger: 'Cekanje2'
+        },
+        {
+          id: 'Cekanje2',
+          user: true,
+          trigger: 'Cekanje3'
+        },
+        {
+          id: 'Cekanje3',
+          message: 'Znaci iz {previousValue}, fino.',
+          trigger: 'Cekanje4'
+        },
+        {
+          id: 'Cekanje4',
+          message: 'A reci mi hoces li da cujes uvredu ili salu?',
           trigger: 'Problem'
         },
         {
