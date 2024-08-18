@@ -1,0 +1,128 @@
+:root {
+    --body-bg: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    --header-bg: #00416A;
+    --section-bg: #5072A7;
+    --border: 2px solid #000;
+    --text-color: #fff;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --border-radius: 15px;
+  }
+  
+  .header {
+    font-family: "Orbitron";
+    font-weight: bold;
+  }
+  
+  .about-us {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 25px 10px;
+    border-radius: 15px;
+    background: var(--section-bg);
+    font-family: "Orbitron";
+    font-weight: bold;
+  }
+  
+  .about-us-header {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    background: var(--header-bg);
+    color: var(--text-color);
+    border-radius: 15px 15px 0 0;
+    font-family: "Orbitron";
+    font-weight: bold;
+  }
+  
+  /* Main content styling */
+  .about-us-content {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 30px;
+    margin-left: 30px;
+    color: var(--text-color);
+    background-color: var(--section-bg);
+    gap: 20px;
+  }
+  
+  .model-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    border-radius: var(--border-radius);
+    background-color: #00416A;
+    padding: 10px;
+    width: 100%;
+    height: 550px;
+  }
+  
+  .sketchfab-embed-wrapper iframe {
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 8px var(--shadow-color);
+    width: 400px;
+    height: 500px;
+    object-fit: cover;
+  }
+  
+  .text-and-quote {
+    flex: 1.5;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Space between text and quote */
+  }
+  
+  .about-us-content p {
+    text-align: justify;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    margin: 0;
+    background-color: #003B63;
+  }
+  
+  .quote-of-the-day {
+    padding: 15px;
+    background-color: #003B63;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 8px var(--shadow-color);
+  }
+  
+  .quote-of-the-day h2 {
+    margin-top: 0;
+  }
+  
+  .quote-of-the-day blockquote {
+    margin: 0;
+    padding: 0;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--text-color);
+    white-space: normal; /* Allow text to wrap */
+    word-wrap: break-word; /* Ensure long words break properly */
+  }
+  
+  .about-us-content a {
+    color: #1CAAD9;
+    text-decoration: none;
+  }
+  
+  .about-us-content a:hover {
+    text-decoration: underline;
+  }
+
+  .subheading {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--text-color);
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+  
+  
+  
