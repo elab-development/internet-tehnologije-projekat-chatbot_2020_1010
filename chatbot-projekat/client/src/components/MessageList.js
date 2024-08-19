@@ -14,9 +14,7 @@ export default function MessageList({ messages }) {
     const fetchProfile = async () => {
       try {
         // Slanje GET zahteva za preuzimanje profila
-        const response = await api.get(`/profiles/${user.id}`, {
-          headers: { "x-auth-token": token }, // Dodavanje tokena u zaglavlje zahteva
-        });
+        const response = await api.get(`/profiles/${user.id}`);
         setProfile(response.data); // Postavljanje podataka o profilu u state
       } catch (error) {
         console.error("Error fetching profile:", error); // Prikazivanje greške u konzoli

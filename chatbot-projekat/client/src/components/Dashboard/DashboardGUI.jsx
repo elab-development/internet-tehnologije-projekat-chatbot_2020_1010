@@ -21,11 +21,7 @@ export default function DashboardGUI() {
   // Funkcija za dobijanje korisnika sa servera
   const getUsers = async () => {
     try {
-      const response = await api.get("/users", {
-        headers: {
-          "x-auth-token": token,
-        },
-      });
+      const response = await api.get("/users");
       setUsers(response.data);
     } catch (error) {
       console.error("Error fetching users:", error);
@@ -35,11 +31,7 @@ export default function DashboardGUI() {
   // Funkcija za brisanje korisnika
   const handleDelete = async (userId) => {
     try {
-      await api.delete(`/users/${userId}`, {
-        headers: {
-          "x-auth-token": token,
-        },
-      });
+      await api.delete(`/users/${userId}`);
       setUsers(users.filter((user) => user._id !== userId));
     } catch (error) {
       console.error("Error deleting user:", error);
@@ -58,11 +50,7 @@ export default function DashboardGUI() {
   // Funkcija za ažuriranje korisnika
   const handleUpdate = async () => {
     try {
-      await api.put(`/users/${editUserId}`, editUserData, {
-        headers: {
-          "x-auth-token": token,
-        },
-      });
+      await api.put(`/users/${editUserId}`, editUserData);
       getUsers();
       setEditUserId(null);
       setEditUserData({
@@ -242,11 +230,7 @@ export default function DashboardGUI() {
                           setEditUserId(user._id);
                           setEditUserData({
                             name: user.name,
-                            email: user.email,
-                            password: "",
-                            gender: user.gender,
-                            bio: user.profile?.bio || "",
-                            avatar: user.profile?.avatar || ""
+                            email: user.email
                           });
                         }}
                         className="edit-btn"

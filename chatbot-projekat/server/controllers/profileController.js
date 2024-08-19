@@ -14,35 +14,9 @@ const get_profile = async (req, res) => {
     }
   };
 
-// Kontroler za kreiranje ili ažuriranje profila
-const create_profile = async (req, res) => {
-    const { bio, avatar } = req.body;
-    try {
-      // Pokušaj da pronađe postojeći profil za korisnika
-      let profile = await Profile.findOne({ user: req.user.id });
-      if (profile) {
-        // Ako profil već postoji, ažuriraj ga
-        profile.bio = bio || profile.bio;
-        profile.avatar = avatar || profile.avatar;
-        await profile.save();
-        return res.json(profile);
-      }
-      // Ako profil ne postoji, kreiraj novi
-      profile = new Profile({
-        user: req.user.id,
-        bio,
-        avatar
-      });
-      await profile.save();
-      res.json(profile);
-    } catch (error) {
-      // Ako dođe do greške, vrati grešku
-      res.status(500).json({ error: error.message });
-    }
-};
+
 
 // Izvoz kontrolera
 module.exports = {
-    get_profile,
-    create_profile
+    get_profile
 };

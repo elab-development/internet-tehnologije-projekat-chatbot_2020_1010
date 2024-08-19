@@ -71,7 +71,7 @@ mongoose
 // Inicijalizuj Socket.io za komunikaciju u realnom vremenu
 const io = require("socket.io")(http, {
   cors: {
-    origin: "http://localhost:3000", // Dozvoli CORS sa ove adrese
+    origin: "http://localhost:3000", // Dozvoli CORS sa ove adrese, za frontend
   },
 });
 

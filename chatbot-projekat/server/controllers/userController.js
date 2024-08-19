@@ -143,7 +143,7 @@ const user_delete = async (req, res) => {
 // Kontroler za ažuriranje podataka o korisniku
 const user_update = async (req, res) => {
   const userId = req.params.id;
-  const { name, email, password, gender, bio, avatar } = req.body;
+  const { name, email} = req.body;
 
   try {
     // Pronađi korisnika po ID-u
@@ -155,23 +155,10 @@ const user_update = async (req, res) => {
     // Ažuriraj podatke o korisniku
     if (name) user.name = name;
     if (email) user.email = email;
-    if (password) {
-      // Hashuj novu lozinku ako je data
-      const salt = await bcrypt.genSalt(10);
-      user.password = await bcrypt.hash(password, salt);
-    }
-    if (gender) user.gender = gender;
 
     // Sačuvaj ažuriranog korisnika
     const updatedUser = await user.save();
 
-    // Ažuriraj korisnikov profil
-    const profile = await Profile.findOne({ user: userId });
-    if (profile) {
-      if (bio) profile.bio = bio;
-      if (avatar) profile.avatar = avatar;
-      await profile.save();
-    }
 
     // Generiši novi token (opciono)
     const token = jwt.sign({ id: updatedUser.id }, process.env.JWT_SECRET, { expiresIn: 3600 });
@@ -183,11 +170,7 @@ const user_update = async (req, res) => {
         name: updatedUser.name,
         email: updatedUser.email,
         gender: updatedUser.gender
-      },
-      profile: profile ? {
-        bio: profile.bio,
-        avatar: profile.avatar,
-      } : null,
+      }
     });
   } catch (err) {
     console.error(err);

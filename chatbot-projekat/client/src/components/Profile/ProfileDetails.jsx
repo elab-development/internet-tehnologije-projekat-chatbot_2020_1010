@@ -7,16 +7,12 @@ import "./ProfileDetails.css";
 export default function ProfileDetails() {
   const [profile, setProfile] = useState({ bio: "", avatar: "" });
   const { user, token } = useAuth();
-  const { gifUrl, loading: gifLoading, error: gifError } = useGif("Chatbot avatar");
+  const { gifUrl, loading: gifLoading, error: gifError } = useGif("Technology");
 
   // Fetch profile data
   const getProfile = async () => {
     try {
-      const response = await api.get(`/profiles/${user.id}`, {
-        headers: {
-          "x-auth-token": token,
-        },
-      });
+      const response = await api.get(`/profiles/${user.id}`);
       setProfile(response.data);
     } catch (error) {
       console.error("Error fetching profile:", error);

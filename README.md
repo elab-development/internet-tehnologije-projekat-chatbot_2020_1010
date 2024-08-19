@@ -9,7 +9,7 @@ Ovo je prvi domaći iz predmeta Iteh na temu ChatBot. Tim koji je radio na proje
 
 Ova aplikacija omogućava korisnicima interakciju sa chatbot-om kroz različite funkcionalnosti prilagođene različitim korisničkim ulogama. Aplikacija nudi personalizovane opcije za korisnike bez naloga, prijavljene korisnike, kao i administratore.
 
-![Pocetna](./chatbot-projekat/images/Konceptualni%20model.png)
+![Konceptualni model](./chatbot-projekat/images/Konceptualni%20model.png)
 
 # Korisnicki Zahtev
 
