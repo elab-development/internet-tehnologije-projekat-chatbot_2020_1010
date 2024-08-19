@@ -20,9 +20,8 @@ const AboutUsGUI = () => {
             <iframe 
               title="Robo_face" 
               frameBorder="0" 
-              allowFullScreen 
-              mozAllowFullScreen="true" 
-              webkitAllowFullScreen="true" 
+              allowFullScreen={true}
+              mozallowfullscreen="true"           
               allow="autoplay; fullscreen; xr-spatial-tracking" 
               src="https://sketchfab.com/models/2526efbe2077444ea82dab30debc58aa/embed"
             >

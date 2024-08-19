@@ -1,36 +1,37 @@
-import { useState, useEffect } from "react"; // Uvozi useState i useEffect hook-ove iz React-a
+import { useState, useEffect } from "react";
 
-// Prilagođeni hook za preuzimanje nasumičnih citata sa Quotable API-a na osnovu tag-ova
-const useQuote = (tags) => {
-  // Definiše stanje za citat, status učitavanja i eventualne greške
+// Custom hook for fetching tech-related quotes from Programming Quotes API
+const useQuote = () => {
   const [quote, setQuote] = useState("");
+  const [author, setAuthor] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Asinhrona funkcija za preuzimanje citata
     const fetchQuote = async () => {
-      setLoading(true); // Postavlja status učitavanja na true pre početka preuzimanja
-      setError(null); // Postavlja grešku na null pre preuzimanja
+      setLoading(true);
+      setError(null);
       try {
-        const response = await fetch(`https://api.quotable.io/random?tags=${tags}`); // Pravi HTTP GET zahtev ka Quotable API-u sa prosleđenim tag-ovima
-        if (!response.ok) { // Ako odgovor nije u redu
-          throw new Error("Network response was not ok"); // Bacanje greške ako odgovor nije u redu
+        const response = await fetch('https://favqs.com/api/qotd');
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
         }
-        const data = await response.json(); // Parsiranje JSON odgovora
-        setQuote(data.content); // Postavljanje citata u stanje
+        const data = await response.json();
+        // Extracting data based on the actual response structure
+        setQuote(data.quote.body);
+        setAuthor(data.quote.author);
       } catch (error) {
-        setError(error.message); // Postavljanje greške u stanje ako se dogodi greška
+        setError(error.message);
       } finally {
-        setLoading(false); // Postavljanje statusa učitavanja na false bez obzira na uspeh ili grešku
+        setLoading(false);
       }
     };
 
-    fetchQuote(); // Poziva funkciju za preuzimanje citata kada se tag promeni
-  }, [tags]); // Efekat zavisi od promene tag-ova
+    fetchQuote(); // Fetch quote on component mount
+  }, []); // Effect runs only once
 
-  // Vraća objekat sa citatom, statusom učitavanja i greškom
-  return { quote, loading, error };
+  // Returns the quote, author, loading status, and error
+  return { quote, author, loading, error };
 };
 
-export default useQuote; // Izvozi hook za korišćenje u drugim komponentama
+export default useQuote;
